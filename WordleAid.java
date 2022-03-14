@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class WordleAid {
     public static void main(String[] args) {
-        String fileName = "wordle-allowed-guesses.txt";
+        String fileName = "wordle.txt";
         int[] memo = getCharCount(fileName);
         Node[] nodeList = getNodeList(memo);
 
         Arrays.sort(nodeList);
+        System.out.println(Arrays.toString(nodeList));
 
         char[] topChars = getFirstNChars(nodeList);
         System.out.println(Arrays.toString(topChars));
