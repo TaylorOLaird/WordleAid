@@ -15,7 +15,33 @@ public class WordleAid {
         char[] topChars = getFirstNChars(nodeList);
         System.out.println(Arrays.toString(topChars));
 
+        int[] sMemo = getCharLocationCount(fileName, 's');
+        System.out.println("s: " + Arrays.toString(sMemo));
+
         return;
+    }
+
+    private static int[] getCharLocationCount(String fileName, char target) {
+        Scanner in = null;
+        try {
+            in = new Scanner(new File("./" + fileName));
+        } catch (FileNotFoundException s) {
+            System.out.println("File does Not Exist, error: " + s);
+        }
+
+        int wordLen = 5;
+        int[] memo = new int[wordLen];
+
+        while (in.hasNextLine()) {
+            String word = in.nextLine();
+            for (int currentChar = 0; currentChar < word.length(); currentChar++) {
+                if (word.charAt(currentChar) == target) {
+                    memo[currentChar]++;
+                }
+            }
+        }
+
+        return memo;
     }
 
     private static char[] getFirstNChars(Node[] nodeList) {
