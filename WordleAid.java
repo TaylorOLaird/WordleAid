@@ -1,3 +1,4 @@
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -8,7 +9,24 @@ public class WordleAid {
         int[] memo = getCharCount(fileName);
         Node[] nodeList = getNodeList(memo);
 
+        Arrays.sort(nodeList);
+
+        char[] topChars = getFirstNChars(nodeList);
+        System.out.println(Arrays.toString(topChars));
+
         return;
+    }
+
+    private static char[] getFirstNChars(Node[] nodeList) {
+        int defaultN = 10;
+        return getFirstNChars(nodeList, defaultN);
+    }
+
+    private static char[] getFirstNChars(Node[] nodeList, int n) {
+        char[] array = new char[n];
+        for (int i = 0; i < array.length; i++)
+            array[i] = nodeList[i].getLetter();
+        return array;
     }
 
     private static int[] getCharCount(String fileName) {
