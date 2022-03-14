@@ -1,8 +1,12 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class WordleAid {
     public static void main(String[] args) {
         String fileName = "wordle-allowed-guesses.txt";
         int[] memo = getCharCount(fileName);
+        Node[] nodeList = getNodeList(memo);
 
         return;
     }
@@ -26,5 +30,14 @@ public class WordleAid {
         }
 
         return memo;
+    }
+
+    public static Node[] getNodeList(int[] memo) {
+        Node[] nodeList = new Node[memo.length];
+
+        for (int i = 0; i < nodeList.length; i++)
+            nodeList[i] = new Node((char) (i + (int) 'a'), memo[i]);
+
+        return nodeList;
     }
 }

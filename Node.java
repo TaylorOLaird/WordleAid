@@ -1,16 +1,22 @@
 class Node implements Comparable<Node> {
-    private int info;
+    private char letter;
+    private int count;
 
-    Node(int info) {
-        this.info = info;
+    Node(char letter, int count) {
+        this.letter = letter;
+        this.count = count;
     }
 
-    public int getInfo() {
-        return this.info;
+    public char getLetter() {
+        return this.letter;
+    }
+
+    public int getCount() {
+        return this.count;
     }
 
     public String toString() {
-        return "info: " + this.info;
+        return this.letter + ": " + this.count;
     }
 
     public int compareTo(Node rhs) {
